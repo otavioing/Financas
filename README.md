@@ -40,7 +40,7 @@ Serve como base para futuros aprimoramentos, incluindo gráficos financeiros e a
 🪪 Licença
 Este projeto está sob a licença MIT — sinta-se à vontade para usar e contribuir!
 
-📍 Autor: Otávio Inácio Gomes  
+📍 Autor: Otávio Domingues Da Silva  
 GitHub: @otavioing
 
 
