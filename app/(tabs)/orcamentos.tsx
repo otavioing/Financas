@@ -18,9 +18,6 @@ const imgoutros = require("../../assets/images/ecg_hear.png");
 export default function cadastro() {
 
   function entrar_pagina_dinamica(value: string) {
-    // Navegar para a tela de orçamentos
-    // router.push('/(outros)/compras');
-    console.log(value);
     router.push(`/(outros)/${value}`);
   }
 

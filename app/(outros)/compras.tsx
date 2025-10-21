@@ -25,7 +25,7 @@ export default function compras() {
         <TouchableOpacity style={styles.backButton} onPress={voltar_orcamentos}>
           <Image source={seta_voltar} style={styles.backButtonimg} />
         </TouchableOpacity>
-        <Text style={styles.headerText}>Compras Screen</Text>
+        <Text style={styles.headerText}>Compras</Text>
       </View>
       <View style={styles.main}>
         

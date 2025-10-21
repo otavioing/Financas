@@ -17,7 +17,11 @@ export default function RootLayout() {
 
   <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
+        <Stack.Screen name="(outros)/transporte" options={{ headerShown: false }} />
         <Stack.Screen name="(outros)/compras" options={{ headerShown: false }} />
+        <Stack.Screen name="(outros)/alimentacao" options={{ headerShown: false }} />
+        <Stack.Screen name="(outros)/entreterimento" options={{ headerShown: false }} />
+        <Stack.Screen name="(outros)/saude" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="cadastro" options={{ headerShown: false }} />
         <Stack.Screen name="login" options={{ headerShown: false }} />
