@@ -11,7 +11,7 @@ import {
 } from "react-native";
 
 const seta_voltar = require("../../assets/images/seta_voltar.png");
-const img_garfo_card = require("../../assets/images/restaurant.png");
+const img_carro_card = require("../../assets/images/directions_car.png");
 
 export default function transporte() {
   function voltar_orcamentos() {
@@ -49,7 +49,7 @@ export default function transporte() {
           <View style={styles.containercard}>
             <View style={styles.esquerda}>
               <View style={styles.containerfoto}>
-                <Image source={img_garfo_card} style={{ width: 25, height: 25 }} />
+                <Image source={img_carro_card} style={{ width: 30, height: 25 }} />
               </View>
             </View>
             <View style={styles.direita}>

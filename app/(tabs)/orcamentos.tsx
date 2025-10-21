@@ -14,150 +14,145 @@ const imgtransporte = require("../../assets/images/directions_car.png");
 const imgentreterimento = require("../../assets/images/movie.png");
 const imgsaude = require("../../assets/images/ecg_hear.png");
 const imgoutros = require("../../assets/images/ecg_hear.png");
+const imgoption = require("../../assets/images/more_vert.png");
 
 export default function cadastro() {
-
   function entrar_pagina_dinamica(value: string) {
-    router.push(`/(outros)/${value}`);
+    router.push(`/(outros)/${value}` as any);
   }
-
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Orçamentos</Text>
+        <TouchableOpacity style={styles.optionButton}>
+          <Image source={imgoption} />
+        </TouchableOpacity>
       </View>
       <View style={styles.main}>
+        <View style={styles.containertitulotexto}>
+          <Text style={styles.titulotexto}>Visão Geral</Text>
+        </View>
 
-      <View style={styles.containertitulotexto}>
-      <Text style={styles.titulotexto}>Visão Geral</Text>
-      </View>
-
-      <View style={styles.containercardsorçamentos}>
-
-        <TouchableOpacity style={styles.cardsorçamentos} onPress={() => entrar_pagina_dinamica('alimentacao')}>
-          <View style={styles.esquerda}>
-            <View style={styles.circulofoto}>
-            <Image source={imgcomidas} style={{width: 30, height: 30}} />
-            </View>
-          </View>
-          <View style={styles.meio}>
-            <Text style={styles.titulotextocard}>Alimentação</Text>
-            <Text style={styles.subtitulotextocard}>R$ 0,00 Restantes</Text>
-          </View>
-          <View style={styles.direita}>
-
-            <View style={styles.containerbarraorçamento}>
-
-              <View style={styles.barraorçamentovazia}>
-
-              <View style={styles.barraorçamento}></View>
+        <View style={styles.containercardsorçamentos}>
+          <TouchableOpacity
+            style={styles.cardsorçamentos}
+            onPress={() => entrar_pagina_dinamica("alimentacao")}
+          >
+            <View style={styles.esquerda}>
+              <View style={styles.circulofoto}>
+                <Image source={imgcomidas} style={{ width: 30, height: 30 }} />
               </View>
-              <Text>100%</Text>
-
             </View>
-
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardsorçamentos} onPress={() => entrar_pagina_dinamica('compras')}>
-          <View style={styles.esquerda}>
-            <View style={styles.circulofoto}>
-            <Image source={imgcompras} style={{width: 25, height: 30}} />
+            <View style={styles.meio}>
+              <Text style={styles.titulotextocard}>Alimentação</Text>
+              <Text style={styles.subtitulotextocard}>R$ 0,00 Restantes</Text>
             </View>
-          </View>
-          <View style={styles.meio}>
-            <Text style={styles.titulotextocard}>Compras</Text>
-            <Text style={styles.subtitulotextocard}>R$ 0,00 Restantes</Text>
-          </View>
-          <View style={styles.direita}>
-
-            <View style={styles.containerbarraorçamento}>
-
-              <View style={styles.barraorçamentovazia}>
-
-              <View style={styles.barraorçamento}></View>
+            <View style={styles.direita}>
+              <View style={styles.containerbarraorçamento}>
+                <View style={styles.barraorçamentovazia}>
+                  <View style={styles.barraorçamento}></View>
+                </View>
+                <Text>100%</Text>
               </View>
-              <Text>100%</Text>
-
             </View>
-
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardsorçamentos} onPress={() => entrar_pagina_dinamica('transporte')}>
-          <View style={styles.esquerda}>
-            <View style={styles.circulofoto}>
-            <Image source={imgtransporte} style={{width: 30, height: 25}} />
-            </View>
-          </View>
-          <View style={styles.meio}>
-            <Text style={styles.titulotextocard}>Transporte</Text>
-            <Text style={styles.subtitulotextocard}>R$ 0,00 Restantes</Text>
-          </View>
-          <View style={styles.direita}>
-
-            <View style={styles.containerbarraorçamento}>
-
-              <View style={styles.barraorçamentovazia}>
-
-              <View style={styles.barraorçamento}></View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.cardsorçamentos}
+            onPress={() => entrar_pagina_dinamica("compras")}
+          >
+            <View style={styles.esquerda}>
+              <View style={styles.circulofoto}>
+                <Image source={imgcompras} style={{ width: 25, height: 30 }} />
               </View>
-              <Text>100%</Text>
-
             </View>
-
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardsorçamentos} onPress={() => entrar_pagina_dinamica('entreterimento')}>
-          <View style={styles.esquerda}>
-            <View style={styles.circulofoto}>
-            <Image source={imgentreterimento} style={{width: 30, height: 25}} />
+            <View style={styles.meio}>
+              <Text style={styles.titulotextocard}>Compras</Text>
+              <Text style={styles.subtitulotextocard}>R$ 0,00 Restantes</Text>
             </View>
-          </View>
-          <View style={styles.meio}>
-            <Text style={styles.titulotextocard}>Entreterimento</Text>
-            <Text style={styles.subtitulotextocard}>R$ 0,00 Restantes</Text>
-          </View>
-          <View style={styles.direita}>
-
-            <View style={styles.containerbarraorçamento}>
-
-              <View style={styles.barraorçamentovazia}>
-
-              <View style={styles.barraorçamento}></View>
+            <View style={styles.direita}>
+              <View style={styles.containerbarraorçamento}>
+                <View style={styles.barraorçamentovazia}>
+                  <View style={styles.barraorçamento}></View>
+                </View>
+                <Text>100%</Text>
               </View>
-              <Text>100%</Text>
-
             </View>
-
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.cardsorçamentos} onPress={() => entrar_pagina_dinamica('saude')}>
-          <View style={styles.esquerda}>
-            <View style={styles.circulofoto}>
-            <Image source={imgsaude} style={{width: 30, height: 25}} />
-            </View>
-          </View>
-          <View style={styles.meio}>
-            <Text style={styles.titulotextocard}>Saúde</Text>
-            <Text style={styles.subtitulotextocard}>R$ 0,00 Restantes</Text>
-          </View>
-          <View style={styles.direita}>
-
-            <View style={styles.containerbarraorçamento}>
-
-              <View style={styles.barraorçamentovazia}>
-
-              <View style={styles.barraorçamento}></View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.cardsorçamentos}
+            onPress={() => entrar_pagina_dinamica("transporte")}
+          >
+            <View style={styles.esquerda}>
+              <View style={styles.circulofoto}>
+                <Image
+                  source={imgtransporte}
+                  style={{ width: 30, height: 25 }}
+                />
               </View>
-
-                  <Text>100%</Text>
             </View>
+            <View style={styles.meio}>
+              <Text style={styles.titulotextocard}>Transporte</Text>
+              <Text style={styles.subtitulotextocard}>R$ 0,00 Restantes</Text>
+            </View>
+            <View style={styles.direita}>
+              <View style={styles.containerbarraorçamento}>
+                <View style={styles.barraorçamentovazia}>
+                  <View style={styles.barraorçamento}></View>
+                </View>
+                <Text>100%</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.cardsorçamentos}
+            onPress={() => entrar_pagina_dinamica("entreterimento")}
+          >
+            <View style={styles.esquerda}>
+              <View style={styles.circulofoto}>
+                <Image
+                  source={imgentreterimento}
+                  style={{ width: 30, height: 25 }}
+                />
+              </View>
+            </View>
+            <View style={styles.meio}>
+              <Text style={styles.titulotextocard}>Entreterimento</Text>
+              <Text style={styles.subtitulotextocard}>R$ 0,00 Restantes</Text>
+            </View>
+            <View style={styles.direita}>
+              <View style={styles.containerbarraorçamento}>
+                <View style={styles.barraorçamentovazia}>
+                  <View style={styles.barraorçamento}></View>
+                </View>
+                <Text>100%</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.cardsorçamentos}
+            onPress={() => entrar_pagina_dinamica("saude")}
+          >
+            <View style={styles.esquerda}>
+              <View style={styles.circulofoto}>
+                <Image source={imgsaude} style={{ width: 30, height: 25 }} />
+              </View>
+            </View>
+            <View style={styles.meio}>
+              <Text style={styles.titulotextocard}>Saúde</Text>
+              <Text style={styles.subtitulotextocard}>R$ 0,00 Restantes</Text>
+            </View>
+            <View style={styles.direita}>
+              <View style={styles.containerbarraorçamento}>
+                <View style={styles.barraorçamentovazia}>
+                  <View style={styles.barraorçamento}></View>
+                </View>
 
-          </View>
-        </TouchableOpacity>
-
-      </View>
-
+                <Text>100%</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -193,6 +188,14 @@ const styles = StyleSheet.create({
   titulotexto: {
     fontSize: 20,
     fontWeight: "bold",
+  },
+  optionButton: {
+    justifyContent: "center",
+    alignItems: "flex-end",
+    height: 70,
+    position: "absolute",
+    right: 15,
+    top: 18,
   },
   containercardsorçamentos: {
     width: "100%",
@@ -250,7 +253,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  containerbarraorçamento:{
+  containerbarraorçamento: {
     width: "100%",
     height: "50%",
     justifyContent: "center",
@@ -258,7 +261,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 10,
     position: "relative",
-
   },
   barraorçamentovazia: {
     width: "58%",
@@ -275,7 +277,5 @@ const styles = StyleSheet.create({
     left: 0,
     top: 0,
     zIndex: 1,
-
   },
-
 });
