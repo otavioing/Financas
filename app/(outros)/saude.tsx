@@ -29,6 +29,18 @@ export default function saude() {
         <TouchableOpacity style={styles.addButton}>
           <Text style={styles.Textadd}>+</Text>
         </TouchableOpacity>
+
+        <View style={styles.containereditinfoss}>
+          <TouchableOpacity style={styles.botaoopcoes}>
+            <Text style={styles.textopcoes}>Adicionar gasto</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.botaoopcoes}>
+            <Text style={styles.textopcoes}>Remover gasto</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.botaoopcoes}>
+            <Text style={styles.textopcoes}>Alterar teto de gasto</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       <View style={styles.main}>
         <View style={styles.containersaldorestante}>
@@ -84,6 +96,30 @@ const styles = StyleSheet.create({
     color: "#5c5b5bff",
     fontSize: 24,
     fontWeight: "bold",
+  },
+      containereditinfoss: {
+    position: "absolute",
+    top: 60,
+    right: 37,
+    width: 150,
+    height: 120,
+    zIndex: 1,
+    backgroundColor: "#36A2EB",
+    borderRadius: 5,
+    padding: 10,
+    justifyContent: "flex-start",
+    alignItems: "center",
+    gap: 15,
+  },
+    botaoopcoes: {
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 2,
+  },
+  textopcoes: {
+    fontSize: 14,
+    color: "#ffffff",
   },
   main: {
     flex: 1,

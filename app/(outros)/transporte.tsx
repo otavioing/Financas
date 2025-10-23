@@ -29,6 +29,18 @@ export default function transporte() {
         <TouchableOpacity style={styles.addButton}>
           <Text style={styles.Textadd}>+</Text>
         </TouchableOpacity>
+
+        <View style={styles.containereditinfoss}>
+          <TouchableOpacity style={styles.botaoopcoes}>
+            <Text style={styles.textopcoes}>Adicionar gasto</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.botaoopcoes}>
+            <Text style={styles.textopcoes}>Remover gasto</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.botaoopcoes}>
+            <Text style={styles.textopcoes}>Alterar teto de gasto</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       <View style={styles.main}>
         <View style={styles.containersaldorestante}>
@@ -44,22 +56,24 @@ export default function transporte() {
         </View>
 
         <ScrollView>
-
-          <View style={{alignItems: 'center', marginTop: 20, gap: 15}}>
-          <View style={styles.containercard}>
-            <View style={styles.esquerda}>
-              <View style={styles.containerfoto}>
-                <Image source={img_carro_card} style={{ width: 30, height: 25 }} />
+          <View style={{ alignItems: "center", marginTop: 20, gap: 15 }}>
+            <View style={styles.containercard}>
+              <View style={styles.esquerda}>
+                <View style={styles.containerfoto}>
+                  <Image
+                    source={img_carro_card}
+                    style={{ width: 30, height: 25 }}
+                  />
+                </View>
+              </View>
+              <View style={styles.direita}>
+                <View>
+                  <Text style={styles.textoNome}>Uber</Text>
+                  <Text>12:43</Text>
+                </View>
+                <Text style={styles.textoValorcard}>R$ 50,00</Text>
               </View>
             </View>
-            <View style={styles.direita}>
-              <View>
-              <Text style={styles.textoNome}>Uber</Text>
-              <Text>12:43</Text>
-              </View>
-              <Text style={styles.textoValorcard}>R$ 50,00</Text>
-            </View>
-          </View>
           </View>
         </ScrollView>
       </View>
@@ -82,6 +96,30 @@ const styles = StyleSheet.create({
     color: "#5c5b5bff",
     fontSize: 24,
     fontWeight: "bold",
+  },
+    containereditinfoss: {
+    position: "absolute",
+    top: 60,
+    right: 37,
+    width: 150,
+    height: 120,
+    zIndex: 1,
+    backgroundColor: "#36A2EB",
+    borderRadius: 5,
+    padding: 10,
+    justifyContent: "flex-start",
+    alignItems: "center",
+    gap: 15,
+  },
+    botaoopcoes: {
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 2,
+  },
+  textopcoes: {
+    fontSize: 14,
+    color: "#ffffff",
   },
   main: {
     flex: 1,
@@ -167,7 +205,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  containerfoto:{
+  containerfoto: {
     width: 50,
     height: 50,
     borderRadius: 25,
