@@ -19,6 +19,8 @@ app.listen(Port, () => {
 });
 
 const rotasUsuarios = require("./src/routers/usuariosRouters");
+const rotasTransacoes = require("./src/routers/transacoesRouters");
 
 
 app.use("/usuarios", rotasUsuarios);
+app.use("/transacoes", rotasTransacoes);

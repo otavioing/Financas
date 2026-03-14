@@ -51,9 +51,9 @@ export default function cadastro() {
             <View style={styles.direita}>
               <View style={styles.containerbarraorçamento}>
                 <View style={styles.barraorçamentovazia}>
-                  <View style={styles.barraorçamento}></View>
+                  <View style={[styles.barraorçamento, {width: "25%"}]}></View>
                 </View>
-                <Text>90%</Text>
+                <Text>0%</Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -75,7 +75,7 @@ export default function cadastro() {
                 <View style={styles.barraorçamentovazia}>
                   <View style={styles.barraorçamento}></View>
                 </View>
-                <Text>90%</Text>
+                <Text>0%</Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -100,7 +100,7 @@ export default function cadastro() {
                 <View style={styles.barraorçamentovazia}>
                   <View style={styles.barraorçamento}></View>
                 </View>
-                <Text>90%</Text>
+                <Text>0%</Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -125,7 +125,7 @@ export default function cadastro() {
                 <View style={styles.barraorçamentovazia}>
                   <View style={styles.barraorçamento}></View>
                 </View>
-                <Text>90%</Text>
+                <Text>0%</Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -148,7 +148,7 @@ export default function cadastro() {
                   <View style={styles.barraorçamento}></View>
                 </View>
 
-                <Text>90%</Text>
+                <Text>0%</Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   barraorçamento: {
-    width: "90%",
+    width: "0%",
     height: 9,
     backgroundColor: "#4a90e2ff",
     borderRadius: 5,
