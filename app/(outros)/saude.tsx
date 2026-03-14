@@ -14,6 +14,17 @@ const seta_voltar = require("../../assets/images/seta_voltar.png");
 const img_coracao_card = require("../../assets/images/ecg_hear.png");
 
 export default function saude() {
+
+  const [mostrarMenu, setMostrarMenu] = useState(false);
+
+  const [mostrarAdicionar, setMostrarAdicionar] = useState(false);
+  const [mostrarRemover, setMostrarRemover] = useState(false);
+  const [mostrarTeto, setMostrarTeto] = useState(false);
+
+  const [valorGasto, setValorGasto] = useState("");
+  const [nomeGasto, setNomeGasto] = useState("");
+
+  const [novoTeto, setNovoTeto] = useState("");
   function voltar_orcamentos() {
     // Navegar para a tela de orçamentos
     router.push("/(tabs)/orcamentos");
@@ -26,21 +37,47 @@ export default function saude() {
           <Image source={seta_voltar} style={styles.backButtonimg} />
         </TouchableOpacity>
         <Text style={styles.headerText}>Saúde</Text>
-        <TouchableOpacity style={styles.addButton}>
+        <TouchableOpacity
+          style={styles.addButton}
+          onPress={() => setMostrarMenu(!mostrarMenu)}
+        >
           <Text style={styles.Textadd}>+</Text>
         </TouchableOpacity>
 
-        <View style={styles.containereditinfoss}>
-          <TouchableOpacity style={styles.botaoopcoes}>
-            <Text style={styles.textopcoes}>Adicionar gasto</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.botaoopcoes}>
-            <Text style={styles.textopcoes}>Remover gasto</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.botaoopcoes}>
-            <Text style={styles.textopcoes}>Alterar teto de gasto</Text>
-          </TouchableOpacity>
-        </View>
+        {mostrarMenu && (
+          <View style={styles.containereditinfoss}>
+            <TouchableOpacity
+              style={styles.botaoopcoes}
+              onPress={() => {
+                setMostrarMenu(false);
+                setMostrarAdicionar(true);
+              }}
+            >
+
+              <Text style={styles.textopcoes}>Adicionar gasto</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.botaoopcoes}
+              onPress={() => {
+                setMostrarMenu(false);
+                setMostrarRemover(true);
+              }}
+            >
+              <Text style={styles.textopcoes}>Remover gasto</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.botaoopcoes}
+              onPress={() => {
+                setMostrarMenu(false);
+                setMostrarTeto(true);
+              }}
+            >
+              <Text style={styles.textopcoes}>Alterar teto de gasto</Text>
+            </TouchableOpacity>
+          </View>
+        )}
       </View>
       <View style={styles.main}>
         <View style={styles.containersaldorestante}>
@@ -77,6 +114,90 @@ export default function saude() {
           </View>
         </ScrollView>
       </View>
+      {mostrarAdicionar && (
+        <View style={styles.overlay}>
+          <View style={styles.caixaCentral}>
+
+            <Text style={styles.tituloCaixa}>Adicionar gasto</Text>
+
+            <TextInput
+              style={styles.input}
+              placeholder="Nome do gasto"
+              value={nomeGasto}
+              onChangeText={setNomeGasto}
+            />
+
+            <TextInput
+              style={styles.input}
+              placeholder="Valor"
+              keyboardType="numeric"
+              value={valorGasto}
+              onChangeText={setValorGasto}
+            />
+
+            <TouchableOpacity
+              style={styles.botaoCaixa}
+              onPress={() => {
+                console.log(nomeGasto, valorGasto);
+                setMostrarAdicionar(false);
+              }}
+            >
+              <Text style={styles.textoBotaoCaixa}>Salvar</Text>
+            </TouchableOpacity>
+
+          </View>
+        </View>
+      )}
+      {mostrarRemover && (
+        <View style={styles.overlay}>
+          <View style={styles.caixaCentral}>
+
+            <Text style={styles.tituloCaixa}>Remover gasto</Text>
+
+            <Text style={{ marginBottom: 20 }}>
+              Deseja remover este gasto?
+            </Text>
+
+            <TouchableOpacity
+              style={styles.botaoCaixa}
+              onPress={() => {
+                console.log("Gasto removido");
+                setMostrarRemover(false);
+              }}
+            >
+              <Text style={styles.textoBotaoCaixa}>Remover</Text>
+            </TouchableOpacity>
+
+          </View>
+        </View>
+      )}
+      {mostrarTeto && (
+        <View style={styles.overlay}>
+          <View style={styles.caixaCentral}>
+
+            <Text style={styles.tituloCaixa}>Alterar teto</Text>
+
+            <TextInput
+              style={styles.input}
+              placeholder="Novo teto de gasto"
+              keyboardType="numeric"
+              value={novoTeto}
+              onChangeText={setNovoTeto}
+            />
+
+            <TouchableOpacity
+              style={styles.botaoCaixa}
+              onPress={() => {
+                console.log("Novo teto:", novoTeto);
+                setMostrarTeto(false);
+              }}
+            >
+              <Text style={styles.textoBotaoCaixa}>Salvar</Text>
+            </TouchableOpacity>
+
+          </View>
+        </View>
+      )}
     </View>
   );
 }
@@ -97,7 +218,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
   },
-      containereditinfoss: {
+  containereditinfoss: {
     position: "absolute",
     top: 60,
     right: 37,
@@ -111,7 +232,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 15,
   },
-    botaoopcoes: {
+  botaoopcoes: {
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
@@ -228,4 +349,55 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#5c5b5bff",
   },
+  overlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 999
+  },
+
+
+  caixaCentral: {
+    width: 280,
+    backgroundColor: "#fff",
+    padding: 20,
+    borderRadius: 10,
+    alignItems: "center",
+    elevation: 10
+  },
+
+
+  tituloCaixa: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 15,
+  },
+
+  input: {
+    width: "100%",
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 5,
+    padding: 8,
+    marginBottom: 10,
+  },
+
+  botaoCaixa: {
+    backgroundColor: "#36A2EB",
+    padding: 10,
+    borderRadius: 5,
+    width: "100%",
+    alignItems: "center",
+  },
+
+  textoBotaoCaixa: {
+    color: "#fff",
+    fontWeight: "bold",
+  },
+
 });

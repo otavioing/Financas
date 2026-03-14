@@ -5,16 +5,51 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { Link } from "expo-router";
+import { Link, router  } from "expo-router";
 import React, { useState } from 'react';
+import api from "@/src/services/api";
 
 
 export default function cadastro() {
 
-    const [nome, setNome] = useState('');
-    const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [confirmarSenha, setConfirmarSenha] = useState('');
+  const [loading, setLoading] = useState(false);
 
+
+  const handleCadastro = async () => {
+
+    if (senha !== confirmarSenha) {
+      alert("As senhas não coincidem");
+      return;
+    }
+
+    try {
+
+      setLoading(true);
+
+      const response = await api.post("/usuarios/create", {
+        nome: nome,
+        email: email,
+        senha: senha,
+      });
+
+      console.log(response.data);
+
+      if (response.data.success) {
+        router.push("/login");
+      }
+
+    } catch (error: any) {
+      console.log(error.response?.data || error.message);
+      alert("Erro ao cadastrar usuário");
+    } finally {
+      setLoading(false);
+    }
+
+  };
 
 
   return (
@@ -25,17 +60,25 @@ export default function cadastro() {
       <View style={styles.main}>
         <TextInput style={styles.input} placeholder="Nome" value={nome} onChangeText={setNome} />
         <TextInput style={styles.input} placeholder="Email" value={email} onChangeText={setEmail} />
-        <TextInput style={styles.input} placeholder="Senha" value={senha} onChangeText={setSenha} />
-        <TextInput style={styles.input} placeholder="Confirmar Senha" />
+        <TextInput style={styles.input} placeholder="Senha" secureTextEntry value={senha} onChangeText={setSenha} />
+        <TextInput style={styles.input} placeholder="Confirmar Senha" secureTextEntry value={confirmarSenha} onChangeText={setConfirmarSenha} />
 
-        {!(nome && email && senha) ? (
-        <TouchableOpacity style={styles.buttonoff} disabled>
-          <Text style={styles.buttonText}>Cadastrar</Text>
-        </TouchableOpacity>) : (
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Cadastrar</Text>
-        </TouchableOpacity>
+        {!(nome && email && senha && confirmarSenha) ? (
+          <TouchableOpacity style={styles.buttonoff} disabled>
+            <Text style={styles.buttonText}>Cadastrar</Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            style={styles.button}
+            onPress={handleCadastro}
+            disabled={loading}
+          >
+            <Text style={styles.buttonText}>
+              {loading ? "Carregando..." : "Cadastrar"}
+            </Text>
+          </TouchableOpacity>
         )}
+
       </View>
       <View style={styles.footer}>
         <Text>
@@ -71,7 +114,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 10,
   },
-    input: {
+  input: {
     width: "80%",
     padding: 10,
     borderWidth: 1,
@@ -79,7 +122,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: "#dfdedeff",
   },
-    button: {
+  button: {
     width: "70%",
     alignItems: "center",
     backgroundColor: "#1380ed",
@@ -87,14 +130,14 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
   },
-  buttonoff:{
+  buttonoff: {
     width: "70%",
     alignItems: "center",
     backgroundColor: "#7d7d7dff",
     padding: 10,
     borderRadius: 5,
   },
-    buttonText: {
+  buttonText: {
     color: "#ffffff",
     fontWeight: "bold",
   },

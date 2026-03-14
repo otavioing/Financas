@@ -14,9 +14,15 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: '#2c2c2c',
+        tabBarInactiveTintColor: '#8e8e8e', // opcional, ícones inativos
         headerShown: false,
         tabBarButton: HapticTab,
+        tabBarStyle: {
+          backgroundColor: 'rgb(255, 255, 255)',
+          borderTopWidth: 0,
+          elevation: 0, // Android
+        },
       }}>
       <Tabs.Screen
         name="index"
@@ -32,13 +38,13 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <MaterialIcons name="pie-chart" size={24} color={color} />,
         }}
       />
-        <Tabs.Screen
-          name="calculadora"
-          options={{
-            title: 'Calculadora',
-            tabBarIcon: ({ color }) => <FontAwesome6 name="calculator" size={24} color={color} />,
-          }}
-        />
+      <Tabs.Screen
+        name="calculadora"
+        options={{
+          title: 'Calculadora',
+          tabBarIcon: ({ color }) => <FontAwesome6 name="calculator" size={24} color={color} />,
+        }}
+      />
       <Tabs.Screen
         name="configuracoes"
         options={{
